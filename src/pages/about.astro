@@ -3,38 +3,72 @@ import Base from "../layouts/Base.astro";
 ---
 
 <Base
-  title="소개 · Jae Ui"
-  description="웹으로 듣고 만지며 배우는 것을 만드는 개발자 Jae Ui(jju09)의 소개."
+  title="소개 · 정재의"
+  description="AI 자동화 엔지니어 정재의(jju09) — 경력, 기술 스택, 교육, 수상 이력."
 >
   <span class="eyebrow">About</span>
-  <h1 class="page-title">만드는 사람, Jae Ui</h1>
-  <p class="page-sub">웹으로 듣고 만지며 배우는 것을 만듭니다.</p>
+  <h1 class="page-title">정재의 <span style="font-size:.5em; color:var(--ink300); font-family:ui-monospace,monospace;">Jeong Jae-Ui</span></h1>
+  <p class="page-sub">LLM과 워크플로우 자동화로 팀의 반복 업무를 없애는 AI 자동화 엔지니어.</p>
 
   <div class="prose">
     <p>
-      설명을 읽는 것보다 직접 만져보는 게 빠른 배움이라고 믿습니다. 그래서
-      브라우저에서 바로 실행되는 인터랙티브 학습 도구를 만듭니다 — 설치 없이,
-      회원가입 없이, 링크 하나로.
+      "사람이 반복하고 있는 일은 파이프라인이 될 수 있다"고 믿습니다. 회사에서는
+      크롤링 → AI 가공 → 발행·적재까지 이어지는 자동화 파이프라인을 만들어
+      운영했고 (<a href="/work/">경력 · 프로젝트</a>), 퇴근 후에는 웹으로 듣고
+      만지며 배우는 것들을 만듭니다 (<a href="/projects/">사이드 프로젝트</a>).
     </p>
     <p>
-      <a href="/projects/soundlab/">SoundLab</a>은 신디사이저와 이펙터를
-      직접 조립하며 소리의 원리를 배우는 곳이고,
-      <a href="/projects/easyaim/">EasyAim</a>은 FPS 입문자가 에임의 기초를
-      원리부터 익히는 곳입니다. 두 프로젝트 모두 기획부터 디자인, 개발, 배포,
-      운영까지 혼자 만들고 있습니다.
+      설명을 읽는 것보다 직접 만져보는 게 빠른 배움이라고 생각합니다. 도구를
+      만들 때도, 학습 사이트를 만들 때도 "바로 해볼 수 있는가"를 기준으로
+      깎아냅니다.
     </p>
+
+    <h2>경력</h2>
+    <ul>
+      <li>
+        <strong>머스트컴퍼니 · AI 엔지니어</strong> (2025.11 ~ 2026.06) — 사내
+        업무 자동화 및 AI 프로덕트 개발. 보고서 자동화, AI 뉴스레터 Mercury,
+        HR 데이터 파이프라인, AI 프로덕트 PoC
+      </li>
+      <li>
+        <strong>수원대학교 데이터과학부 · 학부 연구인턴</strong> (2023.06 ~
+        2024.02) — 국민건강영양조사 기반 논문 데이터 분석, 『R로 배우는
+        회귀분석』 실습 교재 Python 변환·재구성
+      </li>
+    </ul>
 
     <h2>기술 스택</h2>
     <ul>
-      <li>프론트엔드 — TypeScript, React/Next.js, Astro, Tailwind CSS</li>
-      <li>인터랙티브 — Web Audio API, Canvas, Three.js</li>
-      <li>운영 — GitHub Actions, Cloudflare, GA4, Search Console</li>
+      <li><strong>자동화 / 워크플로우</strong> — n8n, Crawl4AI, Notion API, Google Sheets API</li>
+      <li><strong>LLM / NLP</strong> — OpenAI API, Gemini API, LiteLLM, LangChain, RAG</li>
+      <li><strong>CV / ML</strong> — PyTorch, scikit-learn, Hugging Face, OpenCV, YOLO, Faster R-CNN</li>
+      <li><strong>Backend / Frontend</strong> — FastAPI, Next.js, React, Astro, Tailwind CSS</li>
+      <li><strong>Infra</strong> — GCP, Docker, Git/GitHub, ONNX, Cloudflare</li>
+    </ul>
+
+    <h2>교육</h2>
+    <ul>
+      <li><strong>코드잇 스프린트 AI 엔지니어 1기</strong> 수료 (2024.12 ~ 2025.07) — LLM·컴퓨터 비전 기반 AI 웹 서비스 개발, 팀 프로젝트·코드 리뷰</li>
+      <li><strong>수원대학교 데이터과학부</strong> 학사 졸업 (2019.03 ~ 2025.02)</li>
+    </ul>
+
+    <h2>수상</h2>
+    <ul>
+      <li>AI·빅데이터 분석 경진대회 장려상 — 화성시연구원데이터센터 (2024.11)</li>
+      <li>빅데이터 센터 오픈 이노베이션 챌린지 장려상 — 성남시 (2019.12)</li>
+    </ul>
+
+    <h2>대외 활동</h2>
+    <ul>
+      <li><strong>AIcove</strong> — 인터랙티브 AI 아트팀 개발 담당, 「호접몽」 제작 · 경기청년 갭이어 후원 유치 (2024)</li>
+      <li><strong>MARS 2025 화성시 AI 박람회</strong> — 수원대 대표 부스 「사계」 제작, 3일간 100명 관람 (2025)</li>
+      <li><strong>화성시 ICT 문화센터 메이커동아리</strong> — 몰입형 AI 전시 「인류 마지막 장례식」 기획·개발 (2023)</li>
     </ul>
 
     <h2>연락</h2>
     <p>
-      <a href="https://github.com/jju09" target="_blank" rel="noopener">GitHub @jju09</a>
-      에서 작업을 볼 수 있고, 이슈나 이메일로 연락 주시면 됩니다.
+      <a href="mailto:jeaui54@gmail.com">jeaui54@gmail.com</a> ·
+      <a href="https://github.com/JJU09" target="_blank" rel="noopener">github.com/JJU09</a>
     </p>
   </div>
 </Base>

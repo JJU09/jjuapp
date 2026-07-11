@@ -11,7 +11,8 @@ const { title, description, ogTitle } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL("/og.png", Astro.site);
 const navLinks = [
-  { href: "/projects/", label: "프로젝트" },
+  { href: "/work/", label: "경력" },
+  { href: "/projects/", label: "사이드 프로젝트" },
   { href: "/blog/", label: "블로그" },
   { href: "/about/", label: "소개" },
 ];
