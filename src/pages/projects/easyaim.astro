@@ -1,0 +1,77 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base
+  title="EasyAim 케이스 스터디 · Jae Ui"
+  description="FPS 입문자를 위한 에임 학습 사이트 EasyAim — 기획 배경, cm/360 기반 설계, Next.js 정적 배포, 배운 점."
+>
+  <span class="eyebrow">Case Study</span>
+  <h1 class="page-title">🎯 EasyAim</h1>
+  <p class="page-sub">
+    FPS 입문자를 위한 에임 가이드·연습·감도 도구 ·
+    <a href="https://easyaim.jjuapp.com/" target="_blank" rel="noopener"
+      >easyaim.jjuapp.com</a
+    >
+  </p>
+
+  <div class="prose">
+    <h2>왜 만들었나</h2>
+    <p>
+      에임 연습 도구는 KovaaK's, Aim Lab처럼 훌륭한 것들이 이미 있습니다.
+      하지만 대부분 설치가 필요하고, "무엇을 왜 연습해야 하는지"를 알려주지
+      않으며, 한국어 자료는 파편적입니다. 입문자에게 필요한 건 화려한 드릴
+      100개가 아니라 <strong>올바른 순서의 기초 가이드와 바로 해볼 수 있는
+      최소한의 연습</strong>이라고 봤습니다.
+    </p>
+
+    <h2>무엇을 만들었나</h2>
+    <ul>
+      <li><strong>가이드 5단계</strong> — 자세·장비·세팅 → 그립 → 손목과 팔 → 트래킹 심상 → 손가락 미세조정. 읽는 순서 자체가 커리큘럼</li>
+      <li><strong>브라우저 연습 드릴</strong> — 움직이는 타겟을 추적하는 트래킹 드릴. 점수·최고 기록은 localStorage에 저장</li>
+      <li><strong>감도 도구 3종</strong> — 게임별 감도 변환기, cm/360·DPI 계산기, 오버워치 줌 감도 매칭</li>
+    </ul>
+
+    <h2>핵심 설계: cm/360</h2>
+    <p>
+      게임마다 감도 숫자의 의미가 다릅니다. 발로란트 0.4와 CS2 1.27이 같은
+      "손맛"이라는 걸 잇는 물리량이 <strong>cm/360 — 마우스를 몇 cm 움직여야
+      화면이 한 바퀴 도는가</strong>입니다. EasyAim의 모든 도구는 이 값을
+      기준으로 계산하고, 변환기에서 저장한 cm/360을 연습 드릴이 그대로
+      이어받습니다. 도구와 연습이 하나의 기준으로 연결되는 게 차별점입니다.
+    </p>
+
+    <h2>기술 선택과 이유</h2>
+    <p>
+      <strong>Next.js(App Router) 정적 내보내기</strong>로 만들어 GitHub
+      Pages에 배포합니다. 가이드는 MDX로 작성해 본문 안에 인터랙티브 데모를
+      끼워 넣을 수 있고, 연습 드릴은 requestAnimationFrame 기반 게임 루프와
+      Three.js로 구현했습니다. 상태는 zustand로 가볍게 관리합니다.
+    </p>
+
+    <h2>어려웠던 것</h2>
+    <ul>
+      <li>
+        <strong>브라우저에서의 마우스 정밀도</strong> — Pointer Lock API로
+        원시 마우스 입력을 받아야 OS 가속의 영향 없이 게임과 같은 감각을
+        만들 수 있습니다. 브라우저별 미세한 차이를 보정하는 게 관건이었습니다.
+      </li>
+      <li>
+        <strong>"쉬움"의 설계</strong> — 초심자 대상이라 용어 하나, 기본값
+        하나까지 설명 부담을 줄이는 방향으로 깎아냈습니다. 기능을 더하는 것보다
+        빼는 결정이 더 많았습니다.
+      </li>
+    </ul>
+
+    <h2>운영과 다음 계획</h2>
+    <p>
+      게임 쌍별 감도 변환 랜딩 페이지, 타겟 전환 드릴, 크로스헤어 생성기를
+      준비 중입니다. GA4·Search Console 기반으로 검색 유입을 측정하며
+      성장시키는 단계입니다.
+    </p>
+    <blockquote>
+      지표 업데이트 예정 — 월간 PV, 검색 노출/클릭, 드릴 사용 통계를 이
+      자리에서 공개할 계획입니다.
+    </blockquote>
+  </div>
+</Base>

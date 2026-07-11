@@ -1,0 +1,79 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base
+  title="SoundLab 케이스 스터디 · Jae Ui"
+  description="Web Audio API로 만든 인터랙티브 음악 학습 사이트 SoundLab — 기획 배경, 설계, 기술 선택, 배운 점."
+>
+  <span class="eyebrow">Case Study</span>
+  <h1 class="page-title">🎛️ SoundLab</h1>
+  <p class="page-sub">
+    소리를 직접 만지며 배우는 인터랙티브 음악 학습 사이트 ·
+    <a href="https://soundlab.jjuapp.com/" target="_blank" rel="noopener"
+      >soundlab.jjuapp.com</a
+    >
+  </p>
+
+  <div class="prose">
+    <h2>왜 만들었나</h2>
+    <p>
+      음악 이론과 사운드 디자인 교재는 대부분 텍스트와 그림으로 설명합니다.
+      하지만 "컷오프를 올리면 소리가 밝아진다"는 문장은 직접 노브를 돌려 귀로
+      들었을 때 완전히 다르게 이해됩니다. 브라우저의 Web Audio API는 이걸
+      설치도 회원가입도 없이 가능하게 하는데, 한국어로 된 인터랙티브 학습
+      자료는 거의 없었습니다. 그 빈자리를 직접 채우기로 했습니다.
+    </p>
+
+    <h2>무엇을 만들었나</h2>
+    <ul>
+      <li><strong>지식 허브 5개</strong> — 음향 물리 → 디지털오디오 → 신디시스 → 이펙트 → 믹싱으로 이어지는 25개 토픽. 각 토픽에 실시간 인터랙티브 데모, "들어볼 것/볼 것" 가이드, 확인 퀴즈 내장</li>
+      <li><strong>샌드박스 5개</strong> — 모듈러 페달보드, 미니 믹서, 신디사이저, 파동 실험실, 로파이 실험실. 배운 개념을 자유롭게 실험</li>
+      <li><strong>연습 도구 10개</strong> — 메트로놈, 청음 훈련, EQ 주파수 청음, 크로마틱 튜너, 노이즈 제너레이터 등</li>
+      <li><strong>용어집 37개</strong> — 상호 링크된 사운드 용어 사전</li>
+    </ul>
+
+    <h2>기술 선택과 이유</h2>
+    <p>
+      <strong>Astro</strong>를 택했습니다. 콘텐츠가 많은 사이트라 정적 생성이
+      SEO와 로딩 속도에 유리하고, 인터랙티브 데모만 아일랜드로 하이드레이션하면
+      나머지는 순수 HTML로 남길 수 있기 때문입니다.
+    </p>
+    <p>
+      오디오는 전부 <strong>Web Audio API</strong>로 브라우저 안에서
+      처리합니다. 서버로 어떤 오디오 데이터도 보내지 않으므로 지연이 없고,
+      개인정보 이슈도 원천적으로 없습니다. 신스 엔진, 이펙트 체인, 믹서는
+      AudioNode 그래프를 조립하는 공통 추상화 위에서 동작합니다.
+    </p>
+
+    <h2>어려웠던 것</h2>
+    <ul>
+      <li>
+        <strong>오디오 그래프 생명주기</strong> — 페이지 이동·탭 전환 시
+        AudioContext와 노드를 정리하지 않으면 소리가 겹치거나 메모리가 샙니다.
+        마운트/언마운트와 오디오 그래프 생성/해제를 일치시키는 패턴을 만들어
+        해결했습니다.
+      </li>
+      <li>
+        <strong>모바일 오디오 정책</strong> — 브라우저는 사용자 제스처 없이
+        소리를 낼 수 없습니다. 첫 터치에서 AudioContext를 resume하는 처리를
+        모든 데모에 공통 적용했습니다.
+      </li>
+      <li>
+        <strong>배움의 순서 설계</strong> — 기능 나열이 아니라 "물리 → 디지털
+        → 합성 → 가공 → 조합"이라는 서사를 잡는 데 개발만큼 시간이 들었습니다.
+      </li>
+    </ul>
+
+    <h2>운영과 지표</h2>
+    <p>
+      GitHub Actions로 빌드해 GitHub Pages로 배포하고, GA4와 Search Console로
+      유입을 측정합니다. 2026년 7월 현재 검색 유입을 키우는 초기 단계로, 용어집·
+      도구 페이지의 롱테일 키워드를 정비하고 있습니다.
+    </p>
+    <blockquote>
+      지표 업데이트 예정 — 월간 PV, 검색 노출/클릭, 인기 페이지를 이 자리에서
+      공개할 계획입니다.
+    </blockquote>
+  </div>
+</Base>
