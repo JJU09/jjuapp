@@ -1,0 +1,33 @@
+---
+// 단계 흐름도 — 좁은 화면에서는 세로로 쌓인다
+interface Step { t: string; d?: string; }
+interface Props { steps: Step[]; caption?: string; }
+const { steps, caption } = Astro.props;
+---
+<figure class="flow">
+  <ol>
+    {steps.map((s, i) => (
+      <li>
+        <span class="n">{i + 1}</span>
+        <b>{s.t}</b>
+        {s.d && <span class="d">{s.d}</span>}
+      </li>
+    ))}
+  </ol>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .flow { margin: 20px 0 28px; }
+  .flow ol { list-style: none; margin: 0; padding: 0; display: flex; gap: 18px; }
+  .flow li { position: relative; flex: 1 1 0; min-width: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px 10px 12px; display: flex; flex-direction: column; gap: 4px; }
+  .flow li:not(:last-child)::after { content: "→"; position: absolute; right: -15px; top: 50%; transform: translateY(-50%); color: var(--violet); font-weight: 700; }
+  .flow .n { font: 700 11px ui-monospace, monospace; color: var(--violet); }
+  .flow b { font-size: 13.5px; color: var(--ink900); }
+  .flow .d { font-size: 12px; word-break: keep-all; color: var(--ink500); line-height: 1.5; }
+  .flow figcaption { font-size: 12px; color: var(--ink300); margin-top: 8px; }
+  @media (max-width: 640px) {
+    .flow ol { flex-direction: column; gap: 18px; }
+    .flow li:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -17px; transform: translateX(-50%); }
+  }
+</style>

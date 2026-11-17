@@ -1,0 +1,67 @@
+---
+import Base from "../../layouts/Base.astro";
+import Flow from "../../components/Flow.astro";
+---
+
+<Base
+  title="AI 뉴스레터 Mercury 케이스 스터디 · 정재의"
+  description="AI 뉴스 수집부터 LLM 필터링·본문 생성, 편집, 발행까지 자동화한 사내 뉴스레터 플랫폼 Mercury의 구조와 운영 기록."
+>
+  <span class="eyebrow">Case Study · 머스트컴퍼니</span>
+  <h1 class="page-title">AI 뉴스레터 'Mercury'</h1>
+  <p class="page-sub">
+    머스트컴퍼니 재직 중 · 기획·개발·운영 · Crawl4AI, LiteLLM(Gemini), FastAPI, Next.js, Tiptap
+  </p>
+
+  <div class="prose">
+    <blockquote>
+      매주 월·목 주 2회 정기 발행 · 약 70~90명 대상 · 평균 오픈율 약 30%
+    </blockquote>
+
+    <h2>문제</h2>
+    <p>
+      AI 관련 뉴스는 매일 쏟아지는데, 구성원들이 이를 따라가기는 어려웠습니다.
+      누군가 손으로 골라 정리하는 방식은 오래 유지되기 어렵습니다. 몇 사람만
+      알던 AI 정보를 조직 전체가 함께 아는 상태로 만드는 것이 목표였습니다.
+    </p>
+    <p>
+      부대표가 "사내에 정보 뉴스레터가 있으면 좋겠다"고 제안했고, 제가 이를
+      구체화해 만들었습니다. 이후 팀장의 검토와 피드백을 받으며 계속
+      고쳐 나갔습니다.
+    </p>
+
+    <h2>파이프라인</h2>
+    <Flow
+      steps={[
+        { t: "수집", d: "Crawl4AI로 웹 페이지를 수집하고 마크다운 본문 추출" },
+        { t: "필터링", d: "LiteLLM(Gemini)으로 뉴스레터에 실을 기사 선별" },
+        { t: "본문 생성", d: "섹션별 본문을 LLM으로 생성" },
+        { t: "편집", d: "Tiptap 에디터 + AI 어시스턴트로 발행 전 수정" },
+        { t: "발행", d: "매주 월·목 발송" },
+      ]}
+      caption="FastAPI 비동기(asyncio) 서버가 수집부터 발행까지의 흐름을 연결합니다"
+    />
+
+    <h2>기술 선택과 이유</h2>
+    <ul>
+      <li><strong>LiteLLM</strong> · 회사가 부서에 연결해 준 사내 LLM 게이트웨이였습니다. 여러 LLM을 같은 인터페이스로 호출할 수 있게 구성했습니다.</li>
+      <li><strong>Crawl4AI</strong> · 개발·테스트 비용을 최소화하려고 오픈소스 수집 도구를 골랐습니다.</li>
+      <li><strong>FastAPI</strong> · 수집, 생성, 발행 단계를 비동기로 이어 한 파이프라인으로 관리했습니다.</li>
+      <li><strong>Next.js · Tiptap</strong> · 생성된 원고를 사람이 마지막으로 다듬을 수 있도록 AI 어시스턴트가 붙은 편집 화면을 만들었습니다. (Tailwind CSS, shadcn/ui, React Query)</li>
+    </ul>
+
+    <h2>운영</h2>
+    <p>
+      매주 월·목 주 2회 정기 발행했고, 운영 중 큰 장애는 없었습니다. 발송 통계가
+      있는 2026년 3월~6월의 20회 발행 기준으로 수신자는 약 70~90명, 평균 오픈율은
+      약 30%(회차별 17~41%), 평균 클릭률은 약 2.7%였습니다.
+    </p>
+    <p>
+      Mercury는 사내 AI 교육의 한 축이기도 했습니다. 뉴스레터로 최신 AI 도구와
+      기술을 소개하고 구성원들이 직접 써 보도록 권했습니다.
+    </p>
+
+    <hr />
+    <p><a href="/work/">← 경력 · 프로젝트로 돌아가기</a></p>
+  </div>
+</Base>
